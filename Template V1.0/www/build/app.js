@@ -586,6 +586,14 @@ $scope.juegos= [
         				else $state.go('app.item', { title: item.title, icon: item.icon, color: item.color });
         };*/
     }
+
+
+        $scope.exitApp = function () {
+            ionic.Platform.exitApp();
+        };
+
+
+    
 })();
 
 

@@ -1,24 +1,10 @@
-
-<ion-view  align="center" view-title="Toca sobre el animal" class="center" ng-style={'background-color':'coral'}>
+<ion-view  align="center" view-title="Toca sobre el animal" class="center" ng-style={'background-color':'black'}>
   <ion-content  align="center" class="center-content animated slideInUp">
 
-
-<br><br><br><br><br><br>
-      <i style="color:yellow" >Hola {{usuario.nombre}} Vamos a jugar!!!</i>
-<br><br>
-
-<center >
-         Comenzar a jugar!
-  
-</center>
-
 <br><br>
 
 <br><br>
-<br><br>
-
-<br><br>
-<div align="center" >
+<div align="center" class="padding">
 
       <div class="contAnimales">
         <div class="filaAnimal">
@@ -33,6 +19,11 @@
       </button>
           </div>
         </div>
+
+
+
+
+
         <div class="filaAnimal">
           <div class="animalfoto">
             <button  ng-click="play('oveja')" class="button_animal">
@@ -59,9 +50,38 @@
         </div>
       </div>
 
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+      <!--
+
+      ver si queda con scroll
+
+      -->
+
+
+      <center>
+        <div  class="filaAnimal">
+          <div class="animalfoto">
+            <button  ng-click="playall()" class="button button-block button-dark">
+              
+              Reproducir todo
+
+           </button>
+          </div>
+
+
+
+          <div class="animalfoto">
+            <button  ng-click="resetMelo()" class="button button-block button-dark">
+              
+              Reiniciar Melodia
+
+           </button>
+          </div>
+
 
 </div>
-
+</center>
 
 
   </ion-content>

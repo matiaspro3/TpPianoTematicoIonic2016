@@ -258,6 +258,9 @@ console.info("Datos arrtrivia", $rootScope.arrtrivia);
 
 
 
+        $scope.exitApp = function () {
+            ionic.Platform.exitApp();
+        };
 
 
 
@@ -611,6 +614,9 @@ $scope.setRespuesta = function($opcion,btn) {
 .controller('controlerPiano', function($ionicPlatform,$scope, $ionicPopup ,$state,$stateParams, $cordovaVibration,  $cordovaNativeAudio, $timeout, $cordovaFile) 
 {
 
+   //funciona joya guardando un string
+/*
+
 $scopeAnimales="";
 
 $scope.play = function ($algo) {
@@ -628,5 +634,105 @@ $scope.play = function ($algo) {
 
 
   };
+
+*/
+$scopeAnimales=[];
+
+$scope.play = function ($algo) {
+   
+   $scopeAnimales.push($algo);
+    console.info('Animales array:',$scopeAnimales);
+
+  try{
+  $cordovaNativeAudio.play($algo);
+   var patron = [100, 100, 100, 100,100];
+   $cordovaVibration.vibrate(patron); 
+  //$scopeAnimales=$scopeAnimales + '/'+ $algo;   
+ console.info('Animales tocados:',$scopeAnimales);
+  }catch(e)
+
+  { console.info('No es un CElular');}
+
+
+  };
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+$scope.resetMelo=function(){
+
+$scopeAnimales=[];
+
+
+ console.info('Animales array Esta vacio???:',$scopeAnimales);
+}
+
+
+
+
+
+
+$scope.playall = function () {
+  
+    try{ 
+     
+      var patron = [500, 400, 300, 200,100,200, 300, 400,500];
+       $cordovaVibration.vibrate(patron); 
+
+
+      }
+      catch(e)
+
+      { console.info('No es un CElular');}
+
+
+
+ //   console.info('Animales A reproducir:',$scopeAnimales);
+   if ($scopeAnimales.length !=0)
+           {
+          angular.forEach($scopeAnimales,function(value, key) 
+          {
+
+           // console.info("estoy en foreach",key + ': ' + value);
+
+
+          //      $scope.play(value); no sirve pq me vuelve a grabar las cosas
+                 
+            try{ 
+            $cordovaNativeAudio.play(value);
+              }
+            catch(e)
+
+            { console.info('No es un CElular');}
+
+
+
+           }
+          );
+     
+  }
+
+}
+
+
+
+
  
 })
