@@ -119,7 +119,7 @@ try{
     });
 
 $cordovaNativeAudio
-    .preloadComplex('pavo', 'audio/perro.mp3', 1, 1)
+    .preloadComplex('pavo', 'audio/pavo.mp3', 1, 1)
     .then(function (msg) {
       console.log(msg);
     }, function (error) {
@@ -611,7 +611,7 @@ $scope.setRespuesta = function($opcion,btn) {
 });
 *////************************************************************************************************************ 
 
-.controller('controlerPiano', function($ionicPlatform,$scope, $ionicPopup ,$state,$stateParams, $cordovaVibration,  $cordovaNativeAudio, $timeout, $cordovaFile) 
+.controller('controlerPiano', function( $scope ,$cordovaVibration,  $cordovaNativeAudio) 
 {
 
    //funciona joya guardando un string
@@ -636,6 +636,8 @@ $scope.play = function ($algo) {
   };
 
 */
+
+
 $scopeAnimales=[];
 
 $scope.play = function ($algo) {
@@ -659,23 +661,6 @@ $scope.play = function ($algo) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 $scope.resetMelo=function(){
 
 $scopeAnimales=[];
@@ -685,52 +670,32 @@ $scopeAnimales=[];
 }
 
 
-
-
-
-
 $scope.playall = function () {
   
     try{ 
-     
-      var patron = [500, 400, 300, 200,100,200, 300, 400,500];
+        if ($scopeAnimales.length!=0)
+
+        {
+      var patron = [400, 300, 200,100,200, 300, 400];
        $cordovaVibration.vibrate(patron); 
-
-
-      }
-      catch(e)
-
-      { console.info('No es un CElular');}
-
-
-
- //   console.info('Animales A reproducir:',$scopeAnimales);
-   if ($scopeAnimales.length !=0)
-           {
+   
           angular.forEach($scopeAnimales,function(value, key) 
-          {
-
-           // console.info("estoy en foreach",key + ': ' + value);
-
-
-          //      $scope.play(value); no sirve pq me vuelve a grabar las cosas
-                 
-            try{ 
+            {
             $cordovaNativeAudio.play(value);
               }
-            catch(e)
+            );
+  
+   
+        }
 
-            { console.info('No es un CElular');}
+      }catch(e)  { console.info('No es un CElular');}
+
+        console.info('Animales A reproducir:',$scopeAnimales);
+};
 
 
-
-           }
-          );
-     
-  }
-
-}
-
+    
+  
 
 
 

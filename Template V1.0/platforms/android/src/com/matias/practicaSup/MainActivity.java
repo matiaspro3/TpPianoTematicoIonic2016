@@ -17,7 +17,7 @@
        under the License.
  */
 
-package com.nicholls.ionicstartertemplate;
+package com.matias.practicaSup;
 
 import android.os.Bundle;
 import org.apache.cordova.*;

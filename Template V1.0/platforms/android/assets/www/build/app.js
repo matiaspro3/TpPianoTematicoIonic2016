@@ -91,7 +91,7 @@ angular.module('App', ['ionic','firebase','App.controladores', 'ngCordova', 'ngA
 	          cache: false,
             views: {
                 viewContent: {
-	            templateUrl: "templates/Piano.html",
+	            templateUrl: "templates/piano.html",
 	            controller: 'controlerPiano'
 	        }}})
 
@@ -153,10 +153,13 @@ angular.module('App', ['ionic','firebase','App.controladores', 'ngCordova', 'ngA
 
     $urlRouterProvider.otherwise(function ($injector, $location) {
         var $state = $injector.get("$state");
-        $state.go("app.Piano");
+   $state.go("home");
+    //  $state.go("app.Piano");
     });
 }]);
 
+
+///////////////////////////////////***************************************************
 
 
 /* global ionic */
@@ -583,7 +586,18 @@ $scope.juegos= [
         			}
         				else $state.go('app.item', { title: item.title, icon: item.icon, color: item.color });
         };*/
+ 
+       $scope.exitApp = function () {
+            ionic.Platform.exitApp();
+        };
+
+
     }
+
+
+ 
+
+    
 })();
 
 

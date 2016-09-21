@@ -119,7 +119,7 @@ try{
     });
 
 $cordovaNativeAudio
-    .preloadComplex('pavo', 'audio/perro.mp3', 1, 1)
+    .preloadComplex('pavo', 'audio/pavo.mp3', 1, 1)
     .then(function (msg) {
       console.log(msg);
     }, function (error) {
@@ -258,6 +258,9 @@ console.info("Datos arrtrivia", $rootScope.arrtrivia);
 
 
 
+        $scope.exitApp = function () {
+            ionic.Platform.exitApp();
+        };
 
 
 
@@ -608,8 +611,11 @@ $scope.setRespuesta = function($opcion,btn) {
 });
 *////************************************************************************************************************ 
 
-.controller('controlerPiano', function($ionicPlatform,$scope, $ionicPopup ,$state,$stateParams, $cordovaVibration,  $cordovaNativeAudio, $timeout, $cordovaFile) 
+.controller('controlerPiano', function( $scope ,$cordovaVibration,  $cordovaNativeAudio) 
 {
+
+   //funciona joya guardando un string
+/*
 
 $scopeAnimales="";
 
@@ -628,5 +634,70 @@ $scope.play = function ($algo) {
 
 
   };
+
+*/
+
+
+$scopeAnimales=[];
+
+$scope.play = function ($algo) {
+   
+   $scopeAnimales.push($algo);
+    console.info('Animales array:',$scopeAnimales);
+
+  try{
+  $cordovaNativeAudio.play($algo);
+   var patron = [100, 100, 100, 100,100];
+   $cordovaVibration.vibrate(patron); 
+  //$scopeAnimales=$scopeAnimales + '/'+ $algo;   
+ console.info('Animales tocados:',$scopeAnimales);
+  }catch(e)
+
+  { console.info('No es un CElular');}
+
+
+  };
+ 
+
+
+
+$scope.resetMelo=function(){
+
+$scopeAnimales=[];
+
+
+ console.info('Animales array Esta vacio???:',$scopeAnimales);
+}
+
+
+$scope.playall = function () {
+  
+    try{ 
+        if ($scopeAnimales.length!=0)
+
+        {
+      var patron = [400, 300, 200,100,200, 300, 400];
+       $cordovaVibration.vibrate(patron); 
+   
+          angular.forEach($scopeAnimales,function(value, key) 
+            {
+            $cordovaNativeAudio.play(value);
+              }
+            );
+  
+   
+        }
+
+      }catch(e)  { console.info('No es un CElular');}
+
+        console.info('Animales A reproducir:',$scopeAnimales);
+};
+
+
+    
+  
+
+
+
  
 })
