@@ -701,14 +701,14 @@ on {
   height: 30%;
   left:0;
   right:0;
-  background-color:#FFFFFF;
+  background-color:#000000;
   clear:both;
 }
 .animalfoto {
   height: 100%;
   width:49.95%;
-  background-color: #FFFFFF;
-  border: 1px solid #FFFFFF;
+  background-color: #000000;
+  border: 1px solid #000000;
   float:left;
 }
 
@@ -732,7 +732,7 @@ button > img {
   height: 80%;
     color: rgba(255,255,255,1);
     text-decoration: none;
-    background-color: rgba(219,87,5,1);
+    background-color: rgba(255,0,26,1);
     font-weight: 700;
     font-size: 3em;
     display: block;
@@ -740,9 +740,9 @@ button > img {
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
-    -webkit-box-shadow: 0px 9px 0px rgba(219,31,5,1);
-    -moz-box-shadow: 0px 9px 0px rgba(219,31,5,1);
-    box-shadow: 0px 9px 0px rgba(219,31,5,1);
+    -webkit-box-shadow: 0px 9px 0px rgba(299,31,5,1);
+    -moz-box-shadow: 0px 9px 0px rgba(299,31,5,1);
+    box-shadow: 0px 9px 0px rgba(299,31,5,1);
     margin: 20px auto;
   text-align: center;
   
